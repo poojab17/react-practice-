@@ -1,33 +1,25 @@
+import React from 'react';
 import {useState} from 'react';
-import "./App.css";
-const opt = ['Bell pepper', 'Sausage', 'Pepperoni', 'Pineapple'];
 
-export default function PersonalPizza(){
-    const[select , setSelect] = useState([]);
 
-    const toggleToppings = ({target})  =>  {
-        const clickedToppings = target.value;
+function MyComponent(){
+    const[foods, setFood] = useState(['Apple', 'Orange','Banana']);
 
-    setSelect(prev => {
-        if(prev.includes(clickedToppings)){
-            return prev.filter(t => t !== clickedToppings)
-        }
+    function handleAddFoodItem(){
 
-        else{
-            return [clickedToppings, ...prev]
-        }
-    });
-}
-    return(
-        <div>
-            {opt.map(i => (
-                <button value={i} onClick={toggleToppings} key={i}>
-                    {select.includes(i) ? 'Remove' : "Add"} {i}
-                </button>
-            ))}
+    }
 
-            <p>Ordered Pizza : {select.join(',')}</p>
+    function handleRemoveFoodItem(){
+
+    }
+
+    return (<div>
+        <h2>List of food</h2>
+        <ul>
+            {foods.map((food,i) => <li key ={i}>{food}</li>)}
+        </ul>
         </div>
-    );
+);
 }
 
+export default MyComponent;
