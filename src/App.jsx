@@ -37,6 +37,8 @@
 
 // export default MyComponent;
 
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 //useEffect
 
 // import React, {useState, useEffect} from 'react';
@@ -66,3 +68,45 @@
 // }
 
 // export default MyComponent;
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+import React , {useState, useEffect} from 'react';
+
+
+
+function MyComponent(){
+    const[width , setWidth] = useState(window.innerWidth);
+const[height , setHeight] = useState(window.innerHeight);
+
+//{Gets called multipled times}
+// window.addEventListener("resize", handleResize);
+// console.log("working..")
+
+//{runs the event only once}
+useEffect(() => {
+    window.addEventListener("resize", handleResize);
+    console.log("working..");
+
+    return () =>{
+        window.removeEventListener("resize",handleResize);
+        console.log("removed")
+    }
+} , []);
+
+useEffect(() =>{
+    document.title = `Size : ${width} x ${height}`;
+}, [width, height]);
+
+function handleResize(){
+    setHeight(window.innerHeight);
+     setWidth(window.innerWidth);
+}
+    return(<div>
+        <p>Window width: {width} px</p>
+        <p>Window Height: {height} px</p>
+        </div>
+    );
+}
+
+export default MyComponent;
