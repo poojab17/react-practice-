@@ -1,11 +1,13 @@
-import { useState } from 'react'
-
-import './App.css'
-
+import react from 'react';
+import './index.css';
+import Student from './components /Student';
 export default function App() {
   return (
-  <div>
-    <h1>This is Pooja !! lol</h1>
-    </div>);
-
+    <div>
+    <Student name = "Pooja"/>
+    
+    <Student name = "Zaara"/>
+    </div>
+   
+  );
 }
